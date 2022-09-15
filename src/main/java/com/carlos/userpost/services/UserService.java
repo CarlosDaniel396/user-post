@@ -18,12 +18,12 @@ public class UserService {
 	@Autowired
 	private UserRepository repository;
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<User> findAll() {
 		return repository.findAll();
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public User findById(String id) {
 		Optional<User> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
